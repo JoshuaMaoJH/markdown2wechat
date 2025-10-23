@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python缂栫▼鍏ラ棬鎸囧崡</title>
+    
+        <style>
+        /* 微信公众号文章样式 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            font-weight: 600;
+        }
+        
+        h1 { font-size: 1.8em; border-bottom: 2px solid #3498db; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #bdc3c7; padding-bottom: 0.2em; }
+        h3 { font-size: 1.3em; }
+        h4 { font-size: 1.2em; }
+        h5 { font-size: 1.1em; }
+        h6 { font-size: 1em; }
+        
+        p {
+            margin: 1em 0;
+            text-align: justify;
+        }
+        
+        blockquote {
+            margin: 1em 0;
+            padding: 0.5em 1em;
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            color: #555;
+        }
+        
+        code {
+            background-color: #f1f2f6;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: "Consolas", "Monaco", "Courier New", monospace;
+            font-size: 0.9em;
+        }
+        
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1em;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1em 0;
+        }
+        
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            color: inherit;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+        }
+        
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 0.5em;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        ul, ol {
+            margin: 1em 0;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin: 0.3em 0;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1em auto;
+            border-radius: 5px;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        hr {
+            border: none;
+            height: 2px;
+            background-color: #bdc3c7;
+            margin: 2em 0;
+        }
+        
+        /* 微信公众号特殊样式 */
+        .wechat-title {
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 1em 0;
+            color: #2c3e50;
+        }
+        
+        .wechat-subtitle {
+            text-align: center;
+            font-size: 1em;
+            color: #7f8c8d;
+            margin-bottom: 2em;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 0.1em 0.3em;
+            border-radius: 3px;
+        }
+        </style>
+        
+</head>
+<body>
+    <h1 class="wechat-title">Python缂栫▼鍏ラ棬鎸囧崡</h1>
+    <p class="wechat-subtitle">閫傚悎鍒濆鑰呯殑Python鏁欑▼</p>
+    <h1 id="python">Python编程入门指南</h1>
+<blockquote style="margin: 1em 0; padding: 0.5em 1em; background-color: #f8f9fa; border-left: 4px solid #3498db;">
+<p>这是一篇关于Python编程的入门教程，适合初学者学习。</p>
+</blockquote>
+<h2 id="python_1">什么是Python？</h2>
+<p>Python是一种高级编程语言，以其简洁的语法和强大的功能而闻名。它被广泛用于：</p>
+<ul>
+<li>网络开发</li>
+<li>数据科学</li>
+<li>人工智能</li>
+<li>自动化脚本</li>
+</ul>
+<h2 id="python_2">安装Python</h2>
+<h3 id="windows">Windows系统</h3>
+<ol>
+<li>访问 <a href="https://www.python.org/">Python官网</a></li>
+<li>下载最新版本的Python</li>
+<li>运行安装程序</li>
+<li>勾选"Add Python to PATH"选项</li>
+</ol>
+<h3 id="macos">macOS系统</h3>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #3D7B7B; font-style: italic"># 使用Homebrew安装</span>
+brew<span style="color: #BBB"> </span>install<span style="color: #BBB"> </span>python
+
+<span style="color: #3D7B7B; font-style: italic"># 或者从官网下载安装包</span>
+</code></pre></div>
+<h2 id="python_3">第一个Python程序</h2>
+<p>让我们编写一个简单的"Hello World"程序：</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #3D7B7B; font-style: italic"># hello.py</span>
+<span style="color: #008000; font-weight: bold">def</span><span style="color: #BBB"> </span><span style="color: #00F">greet</span>(name):
+<span style="color: #BBB">    </span><span style="color: #BA2121; font-style: italic">"""问候函数"""</span>
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #BA2121">f"Hello, </span><span style="color: #A45A77; font-weight: bold">{</span>name<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121">!"</span>
+
+<span style="color: #008000; font-weight: bold">if</span> <span style="color: #19177C">__name__</span> <span style="color: #666">==</span> <span style="color: #BA2121">"__main__"</span>:
+    name <span style="color: #666">=</span> <span style="color: #008000">input</span>(<span style="color: #BA2121">"请输入您的姓名: "</span>)
+    message <span style="color: #666">=</span> greet(name)
+    <span style="color: #008000">print</span>(message)
+</code></pre></div>
+<h2 id="_1">数据类型</h2>
+<p>Python支持多种数据类型：</p>
+<table style="width: 100%; border-collapse: collapse; margin: 1em 0;">
+<thead>
+<tr>
+<th>类型</th>
+<th>示例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>42</td>
+<td>整数</td>
+</tr>
+<tr>
+<td>float</td>
+<td>3.14</td>
+<td>浮点数</td>
+</tr>
+<tr>
+<td>str</td>
+<td>"Hello"</td>
+<td>字符串</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>True</td>
+<td>布尔值</td>
+</tr>
+<tr>
+<td>list</td>
+<td>[1, 2, 3]</td>
+<td>列表</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_2">控制流程</h2>
+<h3 id="_3">条件语句</h3>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code>age <span style="color: #666">=</span> <span style="color: #666">18</span>
+
+<span style="color: #008000; font-weight: bold">if</span> age <span style="color: #666">&gt;=</span> <span style="color: #666">18</span>:
+    <span style="color: #008000">print</span>(<span style="color: #BA2121">"您已成年"</span>)
+<span style="color: #008000; font-weight: bold">elif</span> age <span style="color: #666">&gt;=</span> <span style="color: #666">13</span>:
+    <span style="color: #008000">print</span>(<span style="color: #BA2121">"您是青少年"</span>)
+<span style="color: #008000; font-weight: bold">else</span>:
+    <span style="color: #008000">print</span>(<span style="color: #BA2121">"您是儿童"</span>)
+</code></pre></div>
+<h3 id="_4">循环语句</h3>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #3D7B7B; font-style: italic"># for循环</span>
+fruits <span style="color: #666">=</span> [<span style="color: #BA2121">"苹果"</span>, <span style="color: #BA2121">"香蕉"</span>, <span style="color: #BA2121">"橙子"</span>]
+<span style="color: #008000; font-weight: bold">for</span> fruit <span style="color: #A2F; font-weight: bold">in</span> fruits:
+    <span style="color: #008000">print</span>(<span style="color: #BA2121">f"我喜欢</span><span style="color: #A45A77; font-weight: bold">{</span>fruit<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121">"</span>)
+
+<span style="color: #3D7B7B; font-style: italic"># while循环</span>
+count <span style="color: #666">=</span> <span style="color: #666">0</span>
+<span style="color: #008000; font-weight: bold">while</span> count <span style="color: #666">&lt;</span> <span style="color: #666">5</span>:
+    <span style="color: #008000">print</span>(<span style="color: #BA2121">f"计数: </span><span style="color: #A45A77; font-weight: bold">{</span>count<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121">"</span>)
+    count <span style="color: #666">+=</span> <span style="color: #666">1</span>
+</code></pre></div>
+<h2 id="_5">函数定义</h2>
+<p>函数是代码重用的重要方式：</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #008000; font-weight: bold">def</span><span style="color: #BBB"> </span><span style="color: #00F">calculate_area</span>(length, width):
+<span style="color: #BBB">    </span><span style="color: #BA2121; font-style: italic">"""</span>
+<span style="color: #BA2121; font-style: italic">    计算矩形面积</span>
+
+<span style="color: #BA2121; font-style: italic">    参数:</span>
+<span style="color: #BA2121; font-style: italic">        length: 长度</span>
+<span style="color: #BA2121; font-style: italic">        width: 宽度</span>
+
+<span style="color: #BA2121; font-style: italic">    返回:</span>
+<span style="color: #BA2121; font-style: italic">        面积值</span>
+<span style="color: #BA2121; font-style: italic">    """</span>
+    <span style="color: #008000; font-weight: bold">return</span> length <span style="color: #666">*</span> width
+
+<span style="color: #3D7B7B; font-style: italic"># 使用函数</span>
+area <span style="color: #666">=</span> calculate_area(<span style="color: #666">5</span>, <span style="color: #666">3</span>)
+<span style="color: #008000">print</span>(<span style="color: #BA2121">f"矩形面积: </span><span style="color: #A45A77; font-weight: bold">{</span>area<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121">"</span>)
+</code></pre></div>
+<h2 id="_6">面向对象编程</h2>
+<p>Python支持面向对象编程：</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #008000; font-weight: bold">class</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">Person</span>:
+    <span style="color: #008000; font-weight: bold">def</span><span style="color: #BBB"> </span><span style="color: #00F">__init__</span>(<span style="color: #008000">self</span>, name, age):
+        <span style="color: #008000">self</span><span style="color: #666">.</span>name <span style="color: #666">=</span> name
+        <span style="color: #008000">self</span><span style="color: #666">.</span>age <span style="color: #666">=</span> age
+
+    <span style="color: #008000; font-weight: bold">def</span><span style="color: #BBB"> </span><span style="color: #00F">introduce</span>(<span style="color: #008000">self</span>):
+        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #BA2121">f"我是</span><span style="color: #A45A77; font-weight: bold">{</span><span style="color: #008000">self</span><span style="color: #666">.</span>name<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121">，今年</span><span style="color: #A45A77; font-weight: bold">{</span><span style="color: #008000">self</span><span style="color: #666">.</span>age<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121">岁"</span>
+
+    <span style="color: #008000; font-weight: bold">def</span><span style="color: #BBB"> </span><span style="color: #00F">have_birthday</span>(<span style="color: #008000">self</span>):
+        <span style="color: #008000">self</span><span style="color: #666">.</span>age <span style="color: #666">+=</span> <span style="color: #666">1</span>
+        <span style="color: #008000">print</span>(<span style="color: #BA2121">f"</span><span style="color: #A45A77; font-weight: bold">{</span><span style="color: #008000">self</span><span style="color: #666">.</span>name<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121">过生日了！现在</span><span style="color: #A45A77; font-weight: bold">{</span><span style="color: #008000">self</span><span style="color: #666">.</span>age<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121">岁"</span>)
+
+<span style="color: #3D7B7B; font-style: italic"># 创建对象</span>
+person <span style="color: #666">=</span> Person(<span style="color: #BA2121">"张三"</span>, <span style="color: #666">25</span>)
+<span style="color: #008000">print</span>(person<span style="color: #666">.</span>introduce())
+person<span style="color: #666">.</span>have_birthday()
+</code></pre></div>
+<h2 id="_7">异常处理</h2>
+<p>处理程序运行时可能出现的错误：</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #008000; font-weight: bold">try</span>:
+    number <span style="color: #666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">"请输入一个数字: "</span>))
+    result <span style="color: #666">=</span> <span style="color: #666">10</span> <span style="color: #666">/</span> number
+    <span style="color: #008000">print</span>(<span style="color: #BA2121">f"10除以</span><span style="color: #A45A77; font-weight: bold">{</span>number<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121">等于</span><span style="color: #A45A77; font-weight: bold">{</span>result<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121">"</span>)
+<span style="color: #008000; font-weight: bold">except</span> <span style="color: #CB3F38; font-weight: bold">ValueError</span>:
+    <span style="color: #008000">print</span>(<span style="color: #BA2121">"输入的不是有效数字"</span>)
+<span style="color: #008000; font-weight: bold">except</span> <span style="color: #CB3F38; font-weight: bold">ZeroDivisionError</span>:
+    <span style="color: #008000">print</span>(<span style="color: #BA2121">"不能除以零"</span>)
+<span style="color: #008000; font-weight: bold">except</span> <span style="color: #CB3F38; font-weight: bold">Exception</span> <span style="color: #008000; font-weight: bold">as</span> e:
+    <span style="color: #008000">print</span>(<span style="color: #BA2121">f"发生错误: </span><span style="color: #A45A77; font-weight: bold">{</span>e<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121">"</span>)
+<span style="color: #008000; font-weight: bold">finally</span>:
+    <span style="color: #008000">print</span>(<span style="color: #BA2121">"程序执行完毕"</span>)
+</code></pre></div>
+<h2 id="_8">常用库</h2>
+<p>Python拥有丰富的第三方库：</p>
+<ul>
+<li><strong>NumPy</strong>: 数值计算</li>
+<li><strong>Pandas</strong>: 数据分析</li>
+<li><strong>Matplotlib</strong>: 数据可视化</li>
+<li><strong>Requests</strong>: HTTP请求</li>
+<li><strong>Flask</strong>: Web框架</li>
+</ul>
+<h2 id="_9">总结</h2>
+<p>Python是一门优秀的编程语言，具有以下特点：</p>
+<ol>
+<li><strong>语法简洁</strong>: 代码易读易写</li>
+<li><strong>功能强大</strong>: 支持多种编程范式</li>
+<li><strong>生态丰富</strong>: 拥有大量第三方库</li>
+<li><strong>跨平台</strong>: 支持多种操作系统</li>
+<li><strong>社区活跃</strong>: 有大量的学习资源</li>
+</ol>
+<hr/>
+<p><strong>开始您的Python编程之旅吧！</strong> 🐍</p>
+<blockquote style="margin: 1em 0; padding: 0.5em 1em; background-color: #f8f9fa; border-left: 4px solid #3498db;">
+<p>记住：编程是一门实践的艺术，多写代码才能提高技能。</p>
+</blockquote>
+
+</body>
+</html>

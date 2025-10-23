@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>震惊！Python股票数据获取竟然可以这么简单？</title>
+    
+        <style>
+        /* 微信公众号文章样式 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            font-weight: 600;
+        }
+        
+        h1 { font-size: 1.8em; border-bottom: 2px solid #3498db; padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid #bdc3c7; padding-bottom: 0.2em; }
+        h3 { font-size: 1.3em; }
+        h4 { font-size: 1.2em; }
+        h5 { font-size: 1.1em; }
+        h6 { font-size: 1em; }
+        
+        p {
+            margin: 1em 0;
+            text-align: justify;
+        }
+        
+        blockquote {
+            margin: 1em 0;
+            padding: 0.5em 1em;
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            color: #555;
+        }
+        
+        code {
+            background-color: #f1f2f6;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: "Consolas", "Monaco", "Courier New", monospace;
+            font-size: 0.9em;
+        }
+        
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1em;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1em 0;
+        }
+        
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            color: inherit;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+        }
+        
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 0.5em;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        ul, ol {
+            margin: 1em 0;
+            padding-left: 2em;
+        }
+        
+        li {
+            margin: 0.3em 0;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1em auto;
+            border-radius: 5px;
+        }
+        
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        hr {
+            border: none;
+            height: 2px;
+            background-color: #bdc3c7;
+            margin: 2em 0;
+        }
+        
+        /* 微信公众号特殊样式 */
+        .wechat-title {
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 1em 0;
+            color: #2c3e50;
+        }
+        
+        .wechat-subtitle {
+            text-align: center;
+            font-size: 1em;
+            color: #7f8c8d;
+            margin-bottom: 2em;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 0.1em 0.3em;
+            border-radius: 3px;
+        }
+        </style>
+        
+</head>
+<body>
+    <h1 class="wechat-title">震惊！Python股票数据获取竟然可以这么简单？</h1>
+    <p class="wechat-subtitle">一行代码搞定所有股票数据！</p>
+    <h1 id="python">🚀 震惊！Python股票数据获取竟然可以这么简单？一行代码搞定所有股票数据！</h1>
+<h2 id="_1">📈 前言：那些年被股票数据折磨的日子</h2>
+<p>还记得那些年，为了获取股票数据，我们经历了什么吗？</p>
+<ul>
+<li>🔥 <strong>凌晨3点爬起来</strong>：为了避开API限制，半夜爬起来爬数据</li>
+<li>😭 <strong>手动安装服务</strong>：每次都要 <code>pip install aktools</code>，然后 <code>python -m aktools</code></li>
+<li>💔 <strong>连接总是失败</strong>：服务启动失败，端口被占用，各种莫名其妙的错误</li>
+<li>😤 <strong>代码写了一大堆</strong>：光是环境配置就写了100行代码</li>
+</ul>
+<p><strong>今天，我要告诉你一个好消息：这些痛苦的日子，彻底结束了！</strong></p>
+<h2 id="akshare-api-v110">🎉 重磅发布：AKShare API v1.1.0</h2>
+<p>经过无数个日夜的研发，我们终于推出了<strong>革命性的股票数据获取库</strong>——AKShare API v1.1.0！</p>
+<h3 id="_2">🔥 核心亮点：<strong>零配置，一键获取</strong></h3>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">akshare_api</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> stock_zh_a_spot_em
+
+<span style="color: #3D7B7B; font-style: italic"># 就这一行代码！自动安装服务，自动启动，自动获取数据！</span>
+data <span style="color: #666">=</span> stock_zh_a_spot_em()
+<span style="color: #008000">print</span>(<span style="color: #BA2121">f"获取到 </span><span style="color: #A45A77; font-weight: bold">{</span><span style="color: #008000">len</span>(data)<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121"> 只股票数据"</span>)
+</code></pre></div>
+<p><strong>你没看错！就这一行代码！</strong></p>
+<ul>
+<li>✅ <strong>自动安装AKTools</strong>：首次使用自动检测并安装</li>
+<li>✅ <strong>自动启动服务</strong>：无需手动运行任何命令</li>
+<li>✅ <strong>智能重连</strong>：连接失败自动重启并重试</li>
+<li>✅ <strong>零配置</strong>：真正的一键使用</li>
+</ul>
+<h2 id="_3">🌟 为什么这个库包会火？</h2>
+<h3 id="1">1️⃣ <strong>痛点解决得彻底</strong></h3>
+<p><strong>以前</strong>：</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #3D7B7B; font-style: italic"># 第一步：安装aktools</span>
+pip install aktools
+
+<span style="color: #3D7B7B; font-style: italic"># 第二步：启动服务</span>
+python <span style="color: #666">-</span>m aktools
+
+<span style="color: #3D7B7B; font-style: italic"># 第三步：等待服务启动</span>
+<span style="color: #3D7B7B; font-style: italic"># 第四步：处理各种错误</span>
+<span style="color: #3D7B7B; font-style: italic"># 第五步：终于可以获取数据了</span>
+</code></pre></div>
+<p><strong>现在</strong>：</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">akshare_api</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> stock_zh_a_spot_em
+data <span style="color: #666">=</span> stock_zh_a_spot_em()  <span style="color: #3D7B7B; font-style: italic"># 就这一行！</span>
+</code></pre></div>
+<h3 id="2">2️⃣ <strong>功能强大到离谱</strong></h3>
+<ul>
+<li>🎯 <strong>98个接口</strong>：涵盖AKShare所有股票数据接口</li>
+<li>🌍 <strong>多市场支持</strong>：A股、B股、港股、美股全覆盖</li>
+<li>🔥 <strong>高级功能</strong>：涨停板、龙虎榜、机构调研、研报资讯</li>
+<li>📊 <strong>数据格式统一</strong>：全部返回pandas.DataFrame，数据分析超方便</li>
+</ul>
+<h3 id="3">3️⃣ <strong>使用场景丰富</strong></h3>
+<h4 id="_4">💼 <strong>量化交易</strong></h4>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">akshare_api</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> stock_zh_a_spot_em, stock_zh_a_hist
+
+<span style="color: #3D7B7B; font-style: italic"># 获取实时行情</span>
+spot_data <span style="color: #666">=</span> stock_zh_a_spot_em()
+
+<span style="color: #3D7B7B; font-style: italic"># 获取历史数据</span>
+hist_data <span style="color: #666">=</span> stock_zh_a_hist(symbol<span style="color: #666">=</span><span style="color: #BA2121">"000001"</span>, start_date<span style="color: #666">=</span><span style="color: #BA2121">"20240101"</span>, end_date<span style="color: #666">=</span><span style="color: #BA2121">"20240131"</span>)
+
+<span style="color: #3D7B7B; font-style: italic"># 直接进行量化分析</span>
+</code></pre></div>
+<h4 id="_5">📈 <strong>市场分析</strong></h4>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">akshare_api</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> stock_zt_pool_em, stock_lhb_detail_em
+
+<span style="color: #3D7B7B; font-style: italic"># 获取涨停板数据</span>
+zt_data <span style="color: #666">=</span> stock_zt_pool_em()
+
+<span style="color: #3D7B7B; font-style: italic"># 获取龙虎榜数据</span>
+lhb_data <span style="color: #666">=</span> stock_lhb_detail_em(symbol<span style="color: #666">=</span><span style="color: #BA2121">"000001"</span>)
+</code></pre></div>
+<h4 id="_6">🎯 <strong>投资研究</strong></h4>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">akshare_api</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> stock_fund_flow_individual_em, stock_financial_abstract
+
+<span style="color: #3D7B7B; font-style: italic"># 获取资金流向</span>
+flow_data <span style="color: #666">=</span> stock_fund_flow_individual_em(symbol<span style="color: #666">=</span><span style="color: #BA2121">"000001"</span>)
+
+<span style="color: #3D7B7B; font-style: italic"># 获取财务摘要</span>
+financial_data <span style="color: #666">=</span> stock_financial_abstract(symbol<span style="color: #666">=</span><span style="color: #BA2121">"000001"</span>)
+</code></pre></div>
+<h2 id="_7">🚀 安装使用：简单到令人发指</h2>
+<h3 id="_8">📦 安装</h3>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code>pip<span style="color: #BBB"> </span>install<span style="color: #BBB"> </span>akshare-api
+</code></pre></div>
+<h3 id="_9">🎯 使用</h3>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">akshare_api</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> stock_zh_a_spot_em
+
+<span style="color: #3D7B7B; font-style: italic"># 就这么简单！</span>
+data <span style="color: #666">=</span> stock_zh_a_spot_em()
+</code></pre></div>
+<p><strong>真的就这么简单！没有其他步骤了！</strong></p>
+<h2 id="_10">💡 技术亮点：黑科技级别的自动化</h2>
+<h3 id="_11">🔧 <strong>智能服务管理</strong></h3>
+<p>我们的库包内置了<strong>革命性的服务管理系统</strong>：</p>
+<ul>
+<li><strong>自动检测</strong>：检测AKTools是否已安装</li>
+<li><strong>自动安装</strong>：未安装时自动安装最新版本</li>
+<li><strong>自动启动</strong>：自动启动AKTools服务</li>
+<li><strong>智能重连</strong>：连接失败时自动重启服务</li>
+<li><strong>状态监控</strong>：实时监控服务运行状态</li>
+</ul>
+<h3 id="_12">🛡️ <strong>错误处理机制</strong></h3>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">akshare_api</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> AKShareAPI
+
+api <span style="color: #666">=</span> AKShareAPI()
+
+<span style="color: #3D7B7B; font-style: italic"># 如果服务连接失败，会自动重启并重试</span>
+<span style="color: #008000; font-weight: bold">try</span>:
+    data <span style="color: #666">=</span> api<span style="color: #666">.</span>stock_zh_a_spot_em()
+<span style="color: #008000; font-weight: bold">except</span> <span style="color: #CB3F38; font-weight: bold">Exception</span> <span style="color: #008000; font-weight: bold">as</span> e:
+    <span style="color: #3D7B7B; font-style: italic"># 库会自动处理，用户无需担心</span>
+    <span style="color: #008000">print</span>(<span style="color: #BA2121">"自动重连中..."</span>)
+</code></pre></div>
+<h2 id="98">📊 数据接口大全：98个接口任你选</h2>
+<h3 id="a47">🏆 <strong>A股数据接口（47个）</strong></h3>
+<ul>
+<li>实时行情、历史数据、分时数据</li>
+<li>涨停板、跌停板、涨跌停统计</li>
+<li>资金流向、主力净流入</li>
+<li>财务数据、基本面分析</li>
+</ul>
+<h3 id="_13">🌍 <strong>多市场支持</strong></h3>
+<ul>
+<li><strong>B股数据</strong>：4个接口</li>
+<li><strong>港股数据</strong>：3个接口  </li>
+<li><strong>美股数据</strong>：3个接口</li>
+</ul>
+<h3 id="36">🔥 <strong>高级功能接口（36个）</strong></h3>
+<ul>
+<li>龙虎榜、机构调研</li>
+<li>概念板块、行业板块</li>
+<li>研报资讯、公告信息</li>
+<li>技术指标、比较分析</li>
+</ul>
+<h2 id="01">🎯 真实案例：从0到1的量化策略</h2>
+<h3 id="1_1">📈 <strong>案例1：简单的趋势策略</strong></h3>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">akshare_api</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> stock_zh_a_spot_em, stock_zh_a_hist
+<span style="color: #008000; font-weight: bold">import</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">pandas</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">as</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">pd</span>
+
+<span style="color: #3D7B7B; font-style: italic"># 获取实时行情</span>
+spot_data <span style="color: #666">=</span> stock_zh_a_spot_em()
+
+<span style="color: #3D7B7B; font-style: italic"># 筛选涨幅大于5%的股票</span>
+hot_stocks <span style="color: #666">=</span> spot_data[spot_data[<span style="color: #BA2121">'涨跌幅'</span>] <span style="color: #666">&gt;</span> <span style="color: #666">5</span>]
+
+<span style="color: #008000">print</span>(<span style="color: #BA2121">f"发现 </span><span style="color: #A45A77; font-weight: bold">{</span><span style="color: #008000">len</span>(hot_stocks)<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121"> 只涨幅超过5%的股票"</span>)
+
+<span style="color: #3D7B7B; font-style: italic"># 获取其中一只股票的历史数据</span>
+<span style="color: #008000; font-weight: bold">if</span> <span style="color: #008000">len</span>(hot_stocks) <span style="color: #666">&gt;</span> <span style="color: #666">0</span>:
+    symbol <span style="color: #666">=</span> hot_stocks<span style="color: #666">.</span>iloc[<span style="color: #666">0</span>][<span style="color: #BA2121">'代码'</span>]
+    hist_data <span style="color: #666">=</span> stock_zh_a_hist(symbol<span style="color: #666">=</span>symbol, start_date<span style="color: #666">=</span><span style="color: #BA2121">"20240101"</span>, end_date<span style="color: #666">=</span><span style="color: #BA2121">"20240131"</span>)
+    <span style="color: #008000">print</span>(<span style="color: #BA2121">f"股票 </span><span style="color: #A45A77; font-weight: bold">{</span>symbol<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121"> 的历史数据："</span>)
+    <span style="color: #008000">print</span>(hist_data<span style="color: #666">.</span>head())
+</code></pre></div>
+<h3 id="2_1">📊 <strong>案例2：资金流向分析</strong></h3>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">akshare_api</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> stock_fund_flow_individual_em
+
+<span style="color: #3D7B7B; font-style: italic"># 获取个股资金流向</span>
+flow_data <span style="color: #666">=</span> stock_fund_flow_individual_em(symbol<span style="color: #666">=</span><span style="color: #BA2121">"000001"</span>)
+
+<span style="color: #008000">print</span>(<span style="color: #BA2121">"平安银行资金流向分析："</span>)
+<span style="color: #008000">print</span>(flow_data)
+</code></pre></div>
+<h2 id="_14">🔥 为什么选择我们？</h2>
+<h3 id="_15">✅ <strong>对比其他方案</strong></h3>
+<table style="width: 100%; border-collapse: collapse; margin: 1em 0;">
+<thead>
+<tr>
+<th>方案</th>
+<th>配置复杂度</th>
+<th>稳定性</th>
+<th>接口数量</th>
+<th>学习成本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AKShare API</strong></td>
+<td>⭐ 极简</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>98个</td>
+<td>⭐ 极低</td>
+</tr>
+<tr>
+<td>原始AKShare</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+<td>98个</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>其他库包</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐</td>
+<td>有限</td>
+<td>⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_16">🎯 <strong>核心优势</strong></h3>
+<ol>
+<li><strong>零学习成本</strong>：一行代码搞定所有</li>
+<li><strong>零配置</strong>：自动处理所有环境问题</li>
+<li><strong>高稳定性</strong>：智能重连，错误自动处理</li>
+<li><strong>功能完整</strong>：98个接口，覆盖所有需求</li>
+<li><strong>持续更新</strong>：基于AKShare最新版本</li>
+</ol>
+<h2 id="30">🚀 立即体验：30秒上手</h2>
+<h3 id="1_2">第1步：安装</h3>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code>pip<span style="color: #BBB"> </span>install<span style="color: #BBB"> </span>akshare-api
+</code></pre></div>
+<h3 id="2_2">第2步：使用</h3>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code><span style="color: #008000; font-weight: bold">from</span><span style="color: #BBB"> </span><span style="color: #00F; font-weight: bold">akshare_api</span><span style="color: #BBB"> </span><span style="color: #008000; font-weight: bold">import</span> stock_zh_a_spot_em
+data <span style="color: #666">=</span> stock_zh_a_spot_em()
+<span style="color: #008000">print</span>(<span style="color: #BA2121">f"获取到 </span><span style="color: #A45A77; font-weight: bold">{</span><span style="color: #008000">len</span>(data)<span style="color: #A45A77; font-weight: bold">}</span><span style="color: #BA2121"> 只股票数据"</span>)
+</code></pre></div>
+<h3 id="3_1">第3步：享受</h3>
+<p><strong>就这么简单！你的股票数据获取之旅正式开启！</strong></p>
+<h2 id="_17">📚 完整文档和示例</h2>
+<p>我们提供了<strong>超详细的文档</strong>：</p>
+<ul>
+<li>📖 <strong>完整API文档</strong>：每个接口都有详细说明</li>
+<li>🎯 <strong>使用示例</strong>：各种场景的代码示例</li>
+<li>🔧 <strong>配置指南</strong>：高级配置选项</li>
+<li>❓ <strong>常见问题</strong>：FAQ和故障排除</li>
+</ul>
+<p><strong>GitHub地址</strong>：https://github.com/JoshuaMaoJH/akshare-api-package</p>
+<h2 id="_18">🎉 结语：股票数据获取的新时代</h2>
+<p>朋友们，股票数据获取的<strong>新时代</strong>已经到来！</p>
+<ul>
+<li>🚫 <strong>告别</strong>：复杂的环境配置</li>
+<li>🚫 <strong>告别</strong>：手动启动服务</li>
+<li>🚫 <strong>告别</strong>：连接失败的烦恼</li>
+<li>
+<p>🚫 <strong>告别</strong>：写不完的配置代码</p>
+</li>
+<li>
+<p>✅ <strong>拥抱</strong>：一行代码获取数据</p>
+</li>
+<li>✅ <strong>拥抱</strong>：零配置的便利</li>
+<li>✅ <strong>拥抱</strong>：智能化的服务管理</li>
+<li>✅ <strong>拥抱</strong>：专业级的稳定性</li>
+</ul>
+<p><strong>AKShare API v1.1.0</strong>，让股票数据获取变得<strong>前所未有的简单</strong>！</p>
+<hr/>
+<h2 id="_19">🔥 立即行动</h2>
+<p>还在等什么？立即安装体验：</p>
+<div class="highlight" style="background: #f8f8f8"><pre style="background-color: #2c3e50; color: #ecf0f1; padding: 1em; border-radius: 5px; overflow-x: auto;"><span></span><code>pip<span style="color: #BBB"> </span>install<span style="color: #BBB"> </span>akshare-api
+</code></pre></div>
+<p><strong>让股票数据获取，从此变得简单！</strong></p>
+<hr/>
+<p><strong>📢 关注我们</strong>：
+- GitHub：https://github.com/JoshuaMaoJH/akshare-api-package
+- PyPI：https://pypi.org/project/akshare-api/</p>
+<p><strong>💬 有问题？</strong> 欢迎在GitHub提交Issue，我们会第一时间回复！</p>
+<p><strong>⭐ 觉得好用？</strong> 给个Star支持一下，让更多人受益！</p>
+<hr/>
+<p><em>本文由AKShare API团队原创，转载请注明出处。</em></p>
+
+</body>
+</html>
