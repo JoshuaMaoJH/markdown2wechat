@@ -1,0 +1,31 @@
+# Flask应用依赖
+Flask==2.3.3
+Flask-CORS==4.0.0
+Werkzeug==2.3.7
+
+# 转换器依赖
+markdown==3.5.1
+beautifulsoup4==4.12.2
+lxml==4.9.3
+
+# 扩展格式支持
+docutils>=0.18.0
+python-docx>=0.8.11
+striprtf>=0.0.12
+
+# 代码高亮
+pygments>=2.10.0
+
+# 生产环境依赖
+gunicorn==21.2.0
+python-dotenv==1.0.0
+
+# 可选：数据库支持
+# SQLAlchemy==2.0.21
+# Flask-SQLAlchemy==3.0.5
+# Flask-Migrate==4.0.5
+
+# 可选：用户认证
+# Flask-Login==0.6.3
+# Flask-WTF==1.1.1
+# WTForms==3.0.1

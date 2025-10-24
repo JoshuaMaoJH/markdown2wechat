@@ -1,0 +1,12 @@
+# 基础依赖
+markdown==3.5.1
+beautifulsoup4==4.12.2
+lxml==4.9.3
+
+# 扩展格式支持依赖（可选）
+docutils>=0.18.0          # RST格式支持
+python-docx>=0.8.11       # Word文档支持
+striprtf>=0.0.12          # RTF格式支持
+
+# 代码高亮支持
+pygments>=2.10.0
