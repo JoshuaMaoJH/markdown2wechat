@@ -5,11 +5,13 @@
 ## ✨ 功能特点
 
 - 🎯 **完美适配**: 专门为微信公众号编辑器优化
-- 🎨 **样式丰富**: 支持标题、段落、代码、表格、引用等多种格式
+- 🎨 **8种风格**: 提供通用性、科技风、金融风、网红风等多种排版风格
+- 📝 **样式丰富**: 支持标题、段落、代码、表格、引用等多种格式
 - 🖼️ **图片支持**: 自动优化图片显示效果
 - 📱 **响应式**: 适配移动端阅读体验
 - 🚀 **简单易用**: 命令行和Python API两种使用方式
 - 📋 **一键复制**: 生成的HTML可直接粘贴到微信公众号编辑器
+- 🎨 **风格选择**: 支持多种预设风格，满足不同内容需求
 
 ## 🛠️ 安装依赖
 
@@ -28,6 +30,12 @@ python markdown2wechat.py sample_article.md
 # 指定输出文件和标题
 python markdown2wechat.py sample_article.md -o output.html -t "我的文章标题" -s "副标题"
 
+# 使用指定风格
+python markdown2wechat.py sample_article.md --style tech -t "技术文章"
+
+# 查看所有可用风格
+python markdown2wechat.py --list-styles
+
 # 查看帮助
 python markdown2wechat.py -h
 ```
@@ -37,8 +45,11 @@ python markdown2wechat.py -h
 ```python
 from markdown2wechat import MarkdownToWeChatConverter
 
-# 创建转换器
+# 创建转换器（默认风格）
 converter = MarkdownToWeChatConverter()
+
+# 创建指定风格的转换器
+converter = MarkdownToWeChatConverter(style="tech")
 
 # 转换文件
 converter.convert_file('input.md', 'output.html', '文章标题', '副标题')
@@ -51,8 +62,25 @@ html_result = converter.convert_text(markdown_text, '标题', '副标题')
 ### 3. 运行演示
 
 ```bash
+# 运行基本演示
 python demo.py
+
+# 演示所有风格
+python demo.py --all-styles
 ```
+
+## 🎨 可用风格
+
+| 风格 | 特点 | 适用场景 |
+|------|------|----------|
+| `default` | 简洁专业，蓝色主题 | 通用文章 |
+| `tech` | 现代科技，深色主题 | 技术博客 |
+| `finance` | 稳重金融，金色主题 | 财经内容 |
+| `influencer` | 活泼时尚，粉色主题 | 生活分享 |
+| `minimal` | 极简黑白，简洁优雅 | 深度阅读 |
+| `colorful` | 彩虹主题，活泼有趣 | 创意内容 |
+| `dark` | 暗黑主题，护眼舒适 | 夜间阅读 |
+| `elegant` | 古典雅致，深蓝主题 | 文学内容 |
 
 ## 📝 支持的Markdown格式
 
@@ -96,9 +124,13 @@ python demo.py
 ```
 markdown2wechat/
 ├── markdown2wechat.py    # 主转换器代码
+├── wechat_styles.py     # 样式模板库
 ├── requirements.txt      # 依赖包列表
 ├── demo.py              # 使用演示
 ├── sample_article.md    # 示例文章
+├── 风格使用指南.md       # 详细风格说明
+├── 使用指南.md          # 使用说明
+├── 测试报告.md          # 功能测试报告
 └── README.md            # 说明文档
 ```
 

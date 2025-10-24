@@ -19,13 +19,20 @@ from bs4 import BeautifulSoup
 import argparse
 import sys
 from pathlib import Path
+from wechat_styles import WeChatStyleTemplates
 
 
 class MarkdownToWeChatConverter:
     """Markdown到微信公众号格式转换器"""
     
-    def __init__(self):
-        """初始化转换器"""
+    def __init__(self, style="default"):
+        """初始化转换器
+        
+        Args:
+            style (str): 样式风格，可选值：default, tech, finance, influencer, minimal, colorful, dark, elegant
+        """
+        self.style = style
+        
         # 配置Markdown扩展
         self.md_extensions = [
             'markdown.extensions.tables',      # 表格支持
@@ -44,147 +51,8 @@ class MarkdownToWeChatConverter:
             }
         }
         
-        # 微信公众号支持的CSS样式
-        self.wechat_styles = """
-        <style>
-        /* 微信公众号文章样式 */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            color: #2c3e50;
-            margin-top: 1.5em;
-            margin-bottom: 0.5em;
-            font-weight: 600;
-        }
-        
-        h1 { font-size: 1.8em; border-bottom: 2px solid #3498db; padding-bottom: 0.3em; }
-        h2 { font-size: 1.5em; border-bottom: 1px solid #bdc3c7; padding-bottom: 0.2em; }
-        h3 { font-size: 1.3em; }
-        h4 { font-size: 1.2em; }
-        h5 { font-size: 1.1em; }
-        h6 { font-size: 1em; }
-        
-        p {
-            margin: 1em 0;
-            text-align: justify;
-        }
-        
-        blockquote {
-            margin: 1em 0;
-            padding: 0.5em 1em;
-            background-color: #f8f9fa;
-            border-left: 4px solid #3498db;
-            color: #555;
-        }
-        
-        code {
-            background-color: #f1f2f6;
-            padding: 0.2em 0.4em;
-            border-radius: 3px;
-            font-family: "Consolas", "Monaco", "Courier New", monospace;
-            font-size: 0.9em;
-        }
-        
-        pre {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            padding: 1em;
-            border-radius: 5px;
-            overflow-x: auto;
-            margin: 1em 0;
-        }
-        
-        pre code {
-            background-color: transparent;
-            padding: 0;
-            color: inherit;
-        }
-        
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            margin: 1em 0;
-        }
-        
-        th, td {
-            border: 1px solid #bdc3c7;
-            padding: 0.5em;
-            text-align: left;
-        }
-        
-        th {
-            background-color: #3498db;
-            color: white;
-            font-weight: 600;
-        }
-        
-        tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        
-        ul, ol {
-            margin: 1em 0;
-            padding-left: 2em;
-        }
-        
-        li {
-            margin: 0.3em 0;
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin: 1em auto;
-            border-radius: 5px;
-        }
-        
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        hr {
-            border: none;
-            height: 2px;
-            background-color: #bdc3c7;
-            margin: 2em 0;
-        }
-        
-        /* 微信公众号特殊样式 */
-        .wechat-title {
-            text-align: center;
-            font-size: 1.8em;
-            font-weight: bold;
-            margin: 1em 0;
-            color: #2c3e50;
-        }
-        
-        .wechat-subtitle {
-            text-align: center;
-            font-size: 1em;
-            color: #7f8c8d;
-            margin-bottom: 2em;
-        }
-        
-        .highlight {
-            background-color: #fff3cd;
-            padding: 0.1em 0.3em;
-            border-radius: 3px;
-        }
-        </style>
-        """
+        # 获取指定风格的CSS样式
+        self.wechat_styles = WeChatStyleTemplates.get_style_template(style)
     
     def convert_markdown_to_html(self, markdown_text):
         """将Markdown文本转换为HTML"""
@@ -308,15 +176,32 @@ class MarkdownToWeChatConverter:
 def main():
     """主函数"""
     parser = argparse.ArgumentParser(description='将Markdown转换为微信公众号文章格式')
-    parser.add_argument('input', help='输入的Markdown文件路径')
+    parser.add_argument('input', nargs='?', help='输入的Markdown文件路径')
     parser.add_argument('-o', '--output', help='输出的HTML文件路径')
     parser.add_argument('-t', '--title', help='文章标题')
     parser.add_argument('-s', '--subtitle', help='文章副标题')
+    parser.add_argument('--style', help='文章风格', 
+                       choices=WeChatStyleTemplates.get_available_styles(),
+                       default='default')
+    parser.add_argument('--list-styles', action='store_true', help='列出所有可用风格')
     
     args = parser.parse_args()
     
+    # 如果用户要求列出风格
+    if args.list_styles:
+        print("可用的文章风格：")
+        print("=" * 50)
+        for style in WeChatStyleTemplates.get_available_styles():
+            description = WeChatStyleTemplates.get_style_description(style)
+            print(f"{style:12} - {description}")
+        return
+    
+    # 检查是否提供了输入文件
+    if not args.input:
+        parser.error("需要提供输入的Markdown文件路径")
+    
     # 创建转换器
-    converter = MarkdownToWeChatConverter()
+    converter = MarkdownToWeChatConverter(style=args.style)
     
     # 执行转换
     converter.convert_file(args.input, args.output, args.title, args.subtitle)
